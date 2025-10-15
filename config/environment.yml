@@ -1,0 +1,37 @@
+backtestConfig:
+  dateRange:
+  # 目前回測資料範圍 2025-02-01 ~ 2025-02-28
+    start: "2025-02-01"
+    end:   "2025-02-28"
+  strategies:
+    - strategyId: 1
+      host: "127.0.0.1"
+      port: 10000
+      commands:
+        - 'python'
+        - 'C:\\backtesting\\Program\\strategy-template\\main.py'
+        - '127.0.0.1'
+        - '10000'
+        - 'samples\\7_不做事'
+
+  statPath: "C:\\backtesting\\log\\bktest_stat"
+  logDir: "C:\\backtesting\\log"
+
+  accounts:
+    - name: "account_A"
+      initialCash: 1000000
+      initialHoldings:
+        "2330": 500
+      dailyLimit: 100000000
+      availableStrategyId: 1
+
+  fileConfig:
+    # 日期
+    rawTickFolderFormat: "\\\\AI-DATABASE\\tw_history_orders\\orders\\%s"
+    # 日期, 股票代碼
+    rawTickFileFormat: "order_%s_%s.csv"
+    refPriceFolder: "\\\\AI-DATABASE\\tw_history_orders\\ref_price"
+    # 日期
+    refPriceFileFormat: "ref_price_%s.csv"
+
+  minIntervalSeconds: 1  
